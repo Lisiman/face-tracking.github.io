@@ -121,38 +121,38 @@ function selectTracker() {
     }
   }
 
-  if (window.modeTracker === 'device') {
-    const handleDeviceOrientation = () => {
-      gimbal.update();
-      if (window.modeTracker === 'device') {
-        window.yaw = (gimbal.yaw * 180) / Math.PI;
-        window.pitch = (gimbal.pitch * 180) / Math.PI;
-        window.roll = (gimbal.roll * 180) / Math.PI;
-      }
-    };
-    try {
-      if (typeof DeviceMotionEvent.requestPermission === 'function') {
-        DeviceMotionEvent.requestPermission().then((response) => {
-          if (response === 'granted') {
-            window.addEventListener('deviceorientation', handleDeviceOrientation, true);
-          }
-        });
-        window.addEventListener('deviceorientation', handleDeviceOrientation, true);
-      } else {
-        window.addEventListener('deviceorientation', handleDeviceOrientation, true);
-      }
-    } catch (e) {
-      getModeElement('device').disabled = true;
-      getModeElement('touch').checked = true;
+  // if (window.modeTracker === 'device') {
+  //   const handleDeviceOrientation = () => {
+  //     gimbal.update();
+  //     if (window.modeTracker === 'device') {
+  //       window.yaw = (gimbal.yaw * 180) / Math.PI;
+  //       window.pitch = (gimbal.pitch * 180) / Math.PI;
+  //       window.roll = (gimbal.roll * 180) / Math.PI;
+  //     }
+  //   };
+  //   try {
+  //     if (typeof DeviceMotionEvent.requestPermission === 'function') {
+  //       DeviceMotionEvent.requestPermission().then((response) => {
+  //         if (response === 'granted') {
+  //           window.addEventListener('deviceorientation', handleDeviceOrientation, true);
+  //         }
+  //       });
+  //       window.addEventListener('deviceorientation', handleDeviceOrientation, true);
+  //     } else {
+  //       window.addEventListener('deviceorientation', handleDeviceOrientation, true);
+  //     }
+  //   } catch (e) {
+  //     getModeElement('device').disabled = true;
+  //     getModeElement('touch').checked = true;
 
-      const warningMessage = 'WARNING: UNABLE TO TRACK DEVICE ORIENTATION!';
-      document.getElementById('warning').innerHTML = (window.modeTracker === 'device')
-        ? warningMessage
-        : '';
-    }
+  //     const warningMessage = 'WARNING: UNABLE TO TRACK DEVICE ORIENTATION!';
+  //     document.getElementById('warning').innerHTML = (window.modeTracker === 'device')
+  //       ? warningMessage
+  //       : '';
+  //   }
 
-    gimbal.enable();
-  }
+  //   gimbal.enable();
+  // }
 }
 
 function enableBoseAR() {
