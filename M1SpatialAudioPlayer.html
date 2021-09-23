@@ -75,6 +75,13 @@
                 text-align: center;
                 margin-bottom: 15px;
             }
+            #camVideo_id{
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              
+            }
             .button:hover {
                 background-color: #EEEEEE;
                 color:#000000;
@@ -90,13 +97,15 @@
             #compass {
                 height: 18vh;
             }
+            #comInfo_id{
+
+            }
             #modelview, #compassContainer {
                 text-align: center;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-
-                padding-top: 41vh;
+                /* padding-top: 41vh; */
             }
             #modelview {
               padding-top: 5vh;
@@ -416,13 +425,13 @@
                 </div>
               </div>
             </div>
-            <div class="container">
+            <div class="container" id="comInfo_id">
                 <div id="compassContainer">
                     <img id="compass" src="img/nav-compass.svg"/>
                 </div>
                 <div id="warning"></div>
             </div>
-            <div class="container" style="position: absolute; bottom: 5px; right: 5px;">
+            <div class="container" id="camVideo_id">
                 <div class="canvas-wrapper">
                     <canvas id="output" style="display:none;"></canvas>
                     <video id="video" playsinline style="-webkit-transform: scaleX(-1); transform: scaleX(-1); visibility: hidden; width: auto; height: auto; position: absolute; bottom: 5px; right: 5px;"></video>
