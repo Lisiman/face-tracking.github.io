@@ -557,6 +557,8 @@ function render() {
 function animate() {
   const map = (value, x1, y1, x2, y2) => ((value - x1) * (y2 - x2)) / (y1 - x1) + x2;
   requestAnimationFrame(animate);
+  //assign a faceTracker mode
+  window.modeTracker="facetracker";
   // Update mode dependent UI here
   if (window.modeTracker === 'touch') {
     window.yaw = map(mouseX, 0, 1, -180, 180);
@@ -615,18 +617,18 @@ function animate() {
       touchStats.style.display = 'none';
     }
   }
-  if (window.modeTracker === 'bosear') {
-    document.getElementById('compass').style.display = '';
-    if (videoOutput.style.display === '') {
-      videoOutput.style.display = 'none';
-    }
-    if (bosearStats.style.display === 'none') {
-      bosearStats.style.display = '';
-    }
-    if (touchStats.style.display === '') {
-      touchStats.style.display = 'none';
-    }
-  }
+  // if (window.modeTracker === 'bosear') {
+  //   document.getElementById('compass').style.display = '';
+  //   if (videoOutput.style.display === '') {
+  //     videoOutput.style.display = 'none';
+  //   }
+  //   if (bosearStats.style.display === 'none') {
+  //     bosearStats.style.display = '';
+  //   }
+  //   if (touchStats.style.display === '') {
+  //     touchStats.style.display = 'none';
+  //   }
+  // }
 
   render();
   stats.update();
