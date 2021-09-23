@@ -386,6 +386,9 @@ async function trackerMain() {
   ctx.fillStyle = '#32EEDB';
   ctx.strokeStyle = '#32EEDB';
 
+    // NOTE: iOS fix; should be start after build, load and resize events
+    video.play();
+    
   model = await facemesh.load({ maxFaces: 1 });
   await renderPrediction();
 
@@ -393,8 +396,7 @@ async function trackerMain() {
   info.innerHTML = '';
   document.getElementById('main').style.display = '';
 
-  // NOTE: iOS fix; should be start after build, load and resize events
-  video.play();
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
