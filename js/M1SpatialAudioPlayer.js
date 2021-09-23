@@ -388,13 +388,15 @@ async function trackerMain() {
 
     // NOTE: iOS fix; should be start after build, load and resize events
     video.play();
-    
+    console.log("video play run");
+
   model = await facemesh.load({ maxFaces: 1 });
   await renderPrediction();
 
   // wait for loaded audio
   info.innerHTML = '';
   document.getElementById('main').style.display = '';
+  console.log("video load");
 
 
 }
