@@ -1,7 +1,7 @@
 // ------------------------
 window.modeTracker = '';
 const videoOutput = document.getElementById('output');
-const bosearStats = document.getElementById('bosearstats');
+// const bosearStats = document.getElementById('bosearstats');
 const touchStats = document.getElementById('touchstats');
 
 /**
@@ -52,39 +52,39 @@ function radiansToDegrees(radians) {
   return radians * (180 / Math.PI);
 }
 
-const boseARDeviceElement = document.querySelector('bose-ar-device');
-const boseAROrder = 'YXZ';
-const boseARConfig = {
-  order: boseAROrder,
-  euler: new THREE.Euler(undefined, undefined, undefined, boseAROrder),
-  eulerOffset: new THREE.Euler(undefined, undefined, undefined, boseAROrder),
-  recallibrate: true,
-  callibrate() {
-    this.eulerOffset.copy(this.euler);
-    this.recallibrate = false;
-  },
-  eulerScalar: { x: 1, y: 1, z: 1 },
-};
+// const boseARDeviceElement = document.querySelector('bose-ar-device');
+// const boseAROrder = 'YXZ';
+// const boseARConfig = {
+//   order: boseAROrder,
+//   euler: new THREE.Euler(undefined, undefined, undefined, boseAROrder),
+//   eulerOffset: new THREE.Euler(undefined, undefined, undefined, boseAROrder),
+//   recallibrate: true,
+//   callibrate() {
+//     this.eulerOffset.copy(this.euler);
+//     this.recallibrate = false;
+//   },
+//   eulerScalar: { x: 1, y: 1, z: 1 },
+// };
 
-boseARDeviceElement.setAttribute('double-tap', '');
-boseARDeviceElement.addEventListener('doubleTap', () => {
-  boseARConfig.recallibrate = true;
-});
+// boseARDeviceElement.setAttribute('double-tap', '');
+// boseARDeviceElement.addEventListener('doubleTap', () => {
+//   boseARConfig.recallibrate = true;
+// });
 
-boseARDeviceElement.addEventListener('rotation', (event) => {
-  boseARConfig.euler.x = Number(event.target.getAttribute('rotationpitch')) + (Math.PI / 2);
-  boseARConfig.euler.y = Number(event.target.getAttribute('rotationyaw'));
-  boseARConfig.euler.z = Number(event.target.getAttribute('rotationroll'));
+// boseARDeviceElement.addEventListener('rotation', (event) => {
+//   boseARConfig.euler.x = Number(event.target.getAttribute('rotationpitch')) + (Math.PI / 2);
+//   boseARConfig.euler.y = Number(event.target.getAttribute('rotationyaw'));
+//   boseARConfig.euler.z = Number(event.target.getAttribute('rotationroll'));
 
-  if (boseARConfig.recallibrate) boseARConfig.callibrate();
+//   if (boseARConfig.recallibrate) boseARConfig.callibrate();
 
-  boseARConfig.euler.x = (boseARConfig.euler.x - boseARConfig.eulerOffset.x) * boseARConfig.eulerScalar.x;
-  boseARConfig.euler.y = (boseARConfig.euler.y - boseARConfig.eulerOffset.y) * boseARConfig.eulerScalar.y;
-  boseARConfig.euler.z = (boseARConfig.euler.z - boseARConfig.eulerOffset.z) * boseARConfig.eulerScalar.z;
+//   boseARConfig.euler.x = (boseARConfig.euler.x - boseARConfig.eulerOffset.x) * boseARConfig.eulerScalar.x;
+//   boseARConfig.euler.y = (boseARConfig.euler.y - boseARConfig.eulerOffset.y) * boseARConfig.eulerScalar.y;
+//   boseARConfig.euler.z = (boseARConfig.euler.z - boseARConfig.eulerOffset.z) * boseARConfig.eulerScalar.z;
 
-  const pitch = radiansToDegrees(boseARConfig.euler.x);
-  const yaw = radiansToDegrees(boseARConfig.euler.y);
-  const roll = radiansToDegrees(boseARConfig.euler.z);
+//   const pitch = radiansToDegrees(boseARConfig.euler.x);
+//   const yaw = radiansToDegrees(boseARConfig.euler.y);
+//   const roll = radiansToDegrees(boseARConfig.euler.z);
 
   document.getElementById('rotationPitch').value = pitch;
   document.getElementById('rotationYaw').value = yaw;
@@ -122,8 +122,14 @@ function selectTracker() {
   // }
 }
 
+// function enableBoseAR() {
+//   const ele = document.getElementById('boseRate');
+//   boseARDeviceElement.setAttribute('rotation', ele.options[ele.selectedIndex].value);
+// }
+
 document.addEventListener('DOMContentLoaded', () => {
   selectTracker();
+  // enableBoseAR();
 });
 
 function setupDatGui() {
@@ -525,9 +531,9 @@ function animate() {
     if (videoOutput.style.display === 'none') {
       videoOutput.style.display = '';
     }
-    if (bosearStats.style.display === '') {
-      bosearStats.style.display = 'none';
-    }
+    // if (bosearStats.style.display === '') {
+    //   bosearStats.style.display = 'none';
+    // }
     if (touchStats.style.display === '') {
       touchStats.style.display = 'none';
     }
