@@ -90,12 +90,12 @@ boseARDeviceElement.addEventListener('rotation', (event) => {
   document.getElementById('rotationYaw').value = yaw;
   document.getElementById('rotationRoll').value = roll;
 
-  if (window.modeTracker === 'bosear') {
-    // TODO: reimplement multipliers and reset all to 1 when `bosear` mode selected
-    window.yaw = yaw;
-    window.pitch = pitch;
-    window.roll = roll;
-  }
+  // if (window.modeTracker === 'bosear') {
+  //   // TODO: reimplement multipliers and reset all to 1 when `bosear` mode selected
+  //   window.yaw = yaw;
+  //   window.pitch = pitch;
+  //   window.roll = roll;
+  // }
 });
 
 const getModeElement = (name) => {
@@ -114,44 +114,11 @@ function selectTracker() {
   // NOTE: Clear all warning messages
   document.getElementById('warning').innerHTML = '';
 
-  const ele = document.getElementsByName('mode');
-  for (let i = 0; i < ele.length; i += 1) {
-    if (ele[i].checked) {
-      window.modeTracker = ele[i].value;
-    }
-  }
-
-  // if (window.modeTracker === 'device') {
-  //   const handleDeviceOrientation = () => {
-  //     gimbal.update();
-  //     if (window.modeTracker === 'device') {
-  //       window.yaw = (gimbal.yaw * 180) / Math.PI;
-  //       window.pitch = (gimbal.pitch * 180) / Math.PI;
-  //       window.roll = (gimbal.roll * 180) / Math.PI;
-  //     }
-  //   };
-  //   try {
-  //     if (typeof DeviceMotionEvent.requestPermission === 'function') {
-  //       DeviceMotionEvent.requestPermission().then((response) => {
-  //         if (response === 'granted') {
-  //           window.addEventListener('deviceorientation', handleDeviceOrientation, true);
-  //         }
-  //       });
-  //       window.addEventListener('deviceorientation', handleDeviceOrientation, true);
-  //     } else {
-  //       window.addEventListener('deviceorientation', handleDeviceOrientation, true);
-  //     }
-  //   } catch (e) {
-  //     getModeElement('device').disabled = true;
-  //     getModeElement('touch').checked = true;
-
-  //     const warningMessage = 'WARNING: UNABLE TO TRACK DEVICE ORIENTATION!';
-  //     document.getElementById('warning').innerHTML = (window.modeTracker === 'device')
-  //       ? warningMessage
-  //       : '';
+  // const ele = document.getElementsByName('mode');
+  // for (let i = 0; i < ele.length; i += 1) {
+  //   if (ele[i].checked) {
+  //     window.modeTracker = ele[i].value;
   //   }
-
-  //   gimbal.enable();
   // }
 }
 
@@ -559,53 +526,7 @@ function animate() {
   requestAnimationFrame(animate);
   //assign a faceTracker mode
   window.modeTracker="facetracker";
-  // Update mode dependent UI here
-  if (window.modeTracker === 'touch') {
-    window.yaw = map(mouseX, 0, 1, -180, 180);
-    window.pitch = map(mouseY, 0, 1, 45, -45);
-    window.roll = 0;
-    document.getElementById('compass').style.display = 'none';
-    if (videoOutput.style.display === '') {
-      videoOutput.style.display = 'none';
-    }
-    if (bosearStats.style.display === '') {
-      bosearStats.style.display = 'none';
-    }
-    if (touchStats.style.display === 'none') {
-      touchStats.style.display = '';
-    }
-
-    const rotateX = `rotateX(${parseInt(-window.pitch, 10)}deg)`;
-    const rotateY = `rotateY(${parseInt(-window.yaw, 10)}deg)`;
-    const transform = `translate(-50%, -50%) ${rotateX} ${rotateY}`;
-    $('.card').css({ transform });
-  }
-  if (window.modeTracker === 'device') {
-    document.getElementById('compass').style.display = '';
-    if (window.yaw != null) yaw = window.yaw;
-    if (window.pitch != null) pitch = -window.pitch;
-    if (window.roll != null) roll = window.roll;
-    if (videoOutput.style.display === '') {
-      videoOutput.style.display = 'none';
-    }
-    if (bosearStats.style.display === '') {
-      bosearStats.style.display = 'none';
-    }
-    if (touchStats.style.display === '') {
-      touchStats.style.display = 'none';
-    }
-  } else {
-    if (videoOutput.style.display === '') {
-      videoOutput.style.display = 'none';
-    }
-    if (bosearStats.style.display === '') {
-      bosearStats.style.display = 'none';
-    }
-    if (window.yaw != null) yaw = fYaw.filter(window.yaw);
-    if (window.pitch != null) pitch = fPitch.filter(window.pitch);
-    if (window.roll != null) roll = fRoll.filter(window.roll);
-  }
-  if (window.modeTracker === 'facetracker') {
+  
     document.getElementById('compass').style.display = '';
     if (videoOutput.style.display === 'none') {
       videoOutput.style.display = '';
@@ -616,19 +537,7 @@ function animate() {
     if (touchStats.style.display === '') {
       touchStats.style.display = 'none';
     }
-  }
-  // if (window.modeTracker === 'bosear') {
-  //   document.getElementById('compass').style.display = '';
-  //   if (videoOutput.style.display === '') {
-  //     videoOutput.style.display = 'none';
-  //   }
-  //   if (bosearStats.style.display === 'none') {
-  //     bosearStats.style.display = '';
-  //   }
-  //   if (touchStats.style.display === '') {
-  //     touchStats.style.display = 'none';
-  //   }
-  // }
+
 
   render();
   stats.update();
