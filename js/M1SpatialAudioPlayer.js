@@ -482,7 +482,9 @@ function init() {
   scene.add(directionalLight);
 
   const material = new THREE.MeshPhongMaterial({
-    color: 0x191919,
+    // color: 0x191919,
+    // color:#FF7070,
+    color: 0xFF8888,
     specular: 0x50505,
     shininess: 25,
     normalScale: new THREE.Vector2(0.8, 0.8),
