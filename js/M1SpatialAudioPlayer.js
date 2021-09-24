@@ -122,14 +122,8 @@ function selectTracker() {
   // }
 }
 
-function enableBoseAR() {
-  const ele = document.getElementById('boseRate');
-  boseARDeviceElement.setAttribute('rotation', ele.options[ele.selectedIndex].value);
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   selectTracker();
-  enableBoseAR();
 });
 
 function setupDatGui() {
