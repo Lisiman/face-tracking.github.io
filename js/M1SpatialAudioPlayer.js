@@ -15,9 +15,10 @@ const controls = {
   FOV: 35,
   filterSpeed: 0.9,
   oneEuroFilterBeta: 0.06,
-
   nPoint: 468,
 };
+
+//pov --- angles to control the degree
 window.controls = controls;
 
 // const audioFiles8 = [
@@ -521,6 +522,7 @@ function render() {
   composer.render();
 }
 
+//to rotate the model in the 
 function animate() {
   const map = (value, x1, y1, x2, y2) => ((value - x1) * (y2 - x2)) / (y1 - x1) + x2;
   requestAnimationFrame(animate);

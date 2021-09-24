@@ -1,6 +1,7 @@
 /**
  * Author: Florian Renaut (florian.renaut@gmail.com)
- * Details: http://www.lifl.fr/~casiez/1euro
+a filter in for the audio  
+* Details: http://www.lifl.fr/~casiez/1euro
  */
 
 function OneEuroFilter(freq, mincutoff, beta, dcutoff){
