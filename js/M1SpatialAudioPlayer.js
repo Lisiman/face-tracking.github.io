@@ -86,17 +86,17 @@ function radiansToDegrees(radians) {
 //   const yaw = radiansToDegrees(boseARConfig.euler.y);
 //   const roll = radiansToDegrees(boseARConfig.euler.z);
 
-  document.getElementById('rotationPitch').value = pitch;
-  document.getElementById('rotationYaw').value = yaw;
-  document.getElementById('rotationRoll').value = roll;
+//   document.getElementById('rotationPitch').value = pitch;
+//   document.getElementById('rotationYaw').value = yaw;
+//   document.getElementById('rotationRoll').value = roll;
 
-  // if (window.modeTracker === 'bosear') {
-  //   // TODO: reimplement multipliers and reset all to 1 when `bosear` mode selected
-  //   window.yaw = yaw;
-  //   window.pitch = pitch;
-  //   window.roll = roll;
-  // }
-});
+//   if (window.modeTracker === 'bosear') {
+//     // TODO: reimplement multipliers and reset all to 1 when `bosear` mode selected
+//     window.yaw = yaw;
+//     window.pitch = pitch;
+//     window.roll = roll;
+//   }
+// });
 
 const getModeElement = (name) => {
   const element = document.getElementsByName('mode');
