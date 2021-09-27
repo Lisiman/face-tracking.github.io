@@ -428,6 +428,8 @@ function init() {
   directionalLight.position.set(1, -0.5, -1);
   scene.add(directionalLight);
 
+  //here is the material setting for the debug scene
+
   const material = new THREE.MeshPhongMaterial({
     // color: 0x191919,
     // color:#FF7070,
