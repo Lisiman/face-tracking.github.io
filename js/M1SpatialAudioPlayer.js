@@ -53,51 +53,6 @@ function radiansToDegrees(radians) {
   return radians * (180 / Math.PI);
 }
 
-// const boseARDeviceElement = document.querySelector('bose-ar-device');
-// const boseAROrder = 'YXZ';
-// const boseARConfig = {
-//   order: boseAROrder,
-//   euler: new THREE.Euler(undefined, undefined, undefined, boseAROrder),
-//   eulerOffset: new THREE.Euler(undefined, undefined, undefined, boseAROrder),
-//   recallibrate: true,
-//   callibrate() {
-//     this.eulerOffset.copy(this.euler);
-//     this.recallibrate = false;
-//   },
-//   eulerScalar: { x: 1, y: 1, z: 1 },
-// };
-
-// boseARDeviceElement.setAttribute('double-tap', '');
-// boseARDeviceElement.addEventListener('doubleTap', () => {
-//   boseARConfig.recallibrate = true;
-// });
-
-// boseARDeviceElement.addEventListener('rotation', (event) => {
-//   boseARConfig.euler.x = Number(event.target.getAttribute('rotationpitch')) + (Math.PI / 2);
-//   boseARConfig.euler.y = Number(event.target.getAttribute('rotationyaw'));
-//   boseARConfig.euler.z = Number(event.target.getAttribute('rotationroll'));
-
-//   if (boseARConfig.recallibrate) boseARConfig.callibrate();
-
-//   boseARConfig.euler.x = (boseARConfig.euler.x - boseARConfig.eulerOffset.x) * boseARConfig.eulerScalar.x;
-//   boseARConfig.euler.y = (boseARConfig.euler.y - boseARConfig.eulerOffset.y) * boseARConfig.eulerScalar.y;
-//   boseARConfig.euler.z = (boseARConfig.euler.z - boseARConfig.eulerOffset.z) * boseARConfig.eulerScalar.z;
-
-//   const pitch = radiansToDegrees(boseARConfig.euler.x);
-//   const yaw = radiansToDegrees(boseARConfig.euler.y);
-//   const roll = radiansToDegrees(boseARConfig.euler.z);
-
-//   document.getElementById('rotationPitch').value = pitch;
-//   document.getElementById('rotationYaw').value = yaw;
-//   document.getElementById('rotationRoll').value = roll;
-
-//   if (window.modeTracker === 'bosear') {
-//     // TODO: reimplement multipliers and reset all to 1 when `bosear` mode selected
-//     window.yaw = yaw;
-//     window.pitch = pitch;
-//     window.roll = roll;
-//   }
-// });
 
 const getModeElement = (name) => {
   const element = document.getElementsByName('mode');
@@ -114,19 +69,9 @@ const gimbal = new Gimbal();
 function selectTracker() {
   // NOTE: Clear all warning messages
   document.getElementById('warning').innerHTML = '';
-
-  // const ele = document.getElementsByName('mode');
-  // for (let i = 0; i < ele.length; i += 1) {
-  //   if (ele[i].checked) {
-  //     window.modeTracker = ele[i].value;
-  //   }
-  // }
 }
 
-// function enableBoseAR() {
-//   const ele = document.getElementById('boseRate');
-//   boseARDeviceElement.setAttribute('rotation', ele.options[ele.selectedIndex].value);
-// }
+
 
 document.addEventListener('DOMContentLoaded', () => {
   selectTracker();
@@ -458,6 +403,8 @@ function init() {
 
     scene.add(pivot);
   };
+
+  //3D stuff starts here?
 
   const mainWindow = document.getElementById('main');
   container = document.getElementById('modelview');
