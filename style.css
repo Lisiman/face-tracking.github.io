@@ -29,6 +29,7 @@ body {
   top: 0;
   transform-origin: 0px 0px;
   overflow: hidden;
+  background-color: black;
 }
 #icon_id{
   display:none;
@@ -140,4 +141,7 @@ body {
   text-align: center;
   font-size: 24px;
   position: absolute;
+}
+.upperText{
+  position: fixed;
 }
