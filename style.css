@@ -144,6 +144,8 @@ body {
 }
 .upperText{
   position: fixed;
+  width:100%;
+
 }
 .bottomText{
   bottom:0;
